@@ -5,44 +5,43 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 20 14% 10%;
+    --foreground: 152 25% 24%;
 
     --card: 0 0% 100%;
-    --card-foreground: 20 14% 10%;
+    --card-foreground: 152 25% 24%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 20 14% 10%;
+    --popover-foreground: 152 25% 24%;
 
-    --primary: 38 92% 50%;
-    --primary-foreground: 20 14% 10%;
+    --primary: 168 48% 44%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 20 14% 10%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 162 40% 80%;
+    --secondary-foreground: 152 25% 24%;
 
-    --muted: 30 15% 95%;
-    --muted-foreground: 20 10% 45%;
+    --muted: 150 40% 97%;
+    --muted-foreground: 152 15% 50%;
 
-    --accent: 38 92% 50%;
-    --accent-foreground: 20 14% 10%;
+    --accent: 30 75% 64%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 30 15% 88%;
-    --input: 30 15% 88%;
-    --ring: 38 92% 50%;
+    --border: 162 30% 86%;
+    --input: 162 30% 86%;
+    --ring: 168 48% 44%;
 
-    --radius: 0.75rem;
+    --radius: 1rem;
 
-    /* Brand Colors */
-    --gold: #f5a623;
-    --gold-light: #ffd166;
-    --gold-dark: #c47d0e;
-    --dark: #1a1208;
-    --dark-mid: #2c1f0a;
-    --cream: #fff8ee;
-    --coral: #ff6b6b;
-    --teal: #06b6d4;
+    /* Brand palette */
+    --mint-bg: #f4fcf9;
+    --dark-text: #2e4a3a;
+    --mint: #3ba58f;
+    --mint-light: #b8e0d4;
+    --peach: #e8a25e;
+    --mint-mid: #d6f0e9;
+    --white: #ffffff;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -65,154 +64,78 @@
   }
 
   body {
-    @apply bg-background text-foreground;
-    font-family: "Golos Text", sans-serif;
+    background-color: var(--mint-bg);
+    color: var(--dark-text);
+    font-family: "Lato", sans-serif;
   }
 
   h1,
   h2,
   h3,
-  h4 {
-    font-family: "Oswald", sans-serif;
+  h4,
+  h5 {
+    font-family: "Cabin", sans-serif;
+    font-weight: 700;
   }
 }
 
-@layer utilities {
-  .font-display {
-    font-family: "Oswald", sans-serif;
-  }
-
-  .font-body {
-    font-family: "Golos Text", sans-serif;
-  }
-
-  .text-gold {
-    color: var(--gold);
-  }
-
-  .bg-gold {
-    background-color: var(--gold);
-  }
-
-  .bg-dark {
-    background-color: var(--dark);
-  }
-
-  .bg-cream {
-    background-color: var(--cream);
-  }
-
-  .border-gold {
-    border-color: var(--gold);
-  }
-
-  .noise-bg::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  .gold-gradient {
-    background: linear-gradient(135deg, #f5a623 0%, #ffd166 50%, #c47d0e 100%);
-  }
-
-  .dark-gradient {
-    background: linear-gradient(135deg, #1a1208 0%, #2c1f0a 100%);
-  }
-
-  .clip-diagonal {
-    clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);
-  }
-
-  .clip-diagonal-reverse {
-    clip-path: polygon(0 12%, 100% 0, 100% 100%, 0 100%);
-  }
+.font-heading {
+  font-family: "Cabin", sans-serif;
+}
+.font-body {
+  font-family: "Lato", sans-serif;
 }
 
-/* Animations */
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(24px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
-
 @keyframes fadeInLeft {
   from {
     opacity: 0;
-    transform: translateX(-30px);
+    transform: translateX(-24px);
   }
   to {
     opacity: 1;
     transform: translateX(0);
   }
 }
-
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: -200% center;
-  }
-  100% {
-    background-position: 200% center;
-  }
-}
-
 @keyframes float {
   0%,
   100% {
-    transform: translateY(0px);
+    transform: translateY(0);
   }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-8px);
   }
 }
-
-@keyframes pulse-gold {
+@keyframes pulse-mint {
   0%,
   100% {
-    box-shadow: 0 0 0 0 rgba(245, 166, 35, 0.4);
+    box-shadow: 0 0 0 0 rgba(59, 165, 143, 0.35);
   }
   50% {
-    box-shadow: 0 0 0 12px rgba(245, 166, 35, 0);
+    box-shadow: 0 0 0 10px rgba(59, 165, 143, 0);
   }
 }
 
 .animate-fade-in-up {
-  animation: fadeInUp 0.6s ease forwards;
+  animation: fadeInUp 0.6s ease both;
 }
-
 .animate-fade-in-left {
-  animation: fadeInLeft 0.6s ease forwards;
+  animation: fadeInLeft 0.6s ease both;
 }
-
-.animate-scale-in {
-  animation: scaleIn 0.5s ease forwards;
-}
-
 .animate-float {
   animation: float 3s ease-in-out infinite;
 }
-
-.animate-pulse-gold {
-  animation: pulse-gold 2s ease-in-out infinite;
+.animate-pulse-mint {
+  animation: pulse-mint 2.5s ease-in-out infinite;
 }
 
 .delay-100 {
@@ -230,26 +153,13 @@
 .delay-500 {
   animation-delay: 0.5s;
 }
-.delay-600 {
-  animation-delay: 0.6s;
-}
 
-/* Hover effects */
 .hover-lift {
   transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 .hover-lift:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-}
-
-.shimmer-text {
-  background: linear-gradient(90deg, #f5a623, #ffd166, #f5a623);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: shimmer 3s linear infinite;
+  transform: translateY(-5px);
+  box-shadow: 0 16px 36px rgba(46, 74, 58, 0.12);
 }

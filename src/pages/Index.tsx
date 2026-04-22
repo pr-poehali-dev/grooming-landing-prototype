@@ -7,414 +7,359 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-const HERO_IMAGE = "https://cdn.poehali.dev/projects/710ac242-afeb-4d9d-9eb3-d0bf025d51a2/files/96bac8e1-ae17-4ca9-a006-83230b2704f1.jpg";
-const DOG_IMAGE = "https://cdn.poehali.dev/projects/710ac242-afeb-4d9d-9eb3-d0bf025d51a2/files/fb9f7d83-ed6a-49b3-b81d-edf8fd9bda6d.jpg";
+const C = {
+  bg: "#F4FCF9",
+  dark: "#2E4A3A",
+  mint: "#3BA58F",
+  mintLight: "#B8E0D4",
+  mintMid: "#D6F0E9",
+  peach: "#E8A25E",
+  white: "#ffffff",
+};
 
 const services = [
   {
-    icon: "Scissors",
-    title: "Комплексный груминг",
-    desc: "Стрижка, купание, сушка, расчёсывание и укладка",
-    prices: [
-      { name: "Маленькая порода", price: "от 1 500 ₽" },
-      { name: "Средняя порода", price: "от 2 500 ₽" },
-      { name: "Крупная порода", price: "от 3 500 ₽" },
-    ],
-    color: "#F5A623",
+    emoji: "✂️",
+    title: "Гигиеническая стрижка",
+    sub: "малыши до 5 кг",
+    price: "1 800 ₽",
   },
   {
-    icon: "Droplets",
-    title: "Купание и сушка",
-    desc: "Профессиональные шампуни, кондиционеры и аромат",
-    prices: [
-      { name: "Маленькая порода", price: "от 700 ₽" },
-      { name: "Средняя порода", price: "от 1 200 ₽" },
-      { name: "Крупная порода", price: "от 1 800 ₽" },
-    ],
-    color: "#06B6D4",
+    emoji: "🛁",
+    title: "Всё включено",
+    sub: "стрижка, мойка, когти, уши",
+    price: "от 2 500 ₽",
   },
   {
-    icon: "Sparkles",
-    title: "SPA-уход",
-    desc: "Маски, увлажнение, восстановление шерсти",
-    prices: [
-      { name: "Маска для шерсти", price: "от 500 ₽" },
-      { name: "Увлажняющий уход", price: "от 800 ₽" },
-      { name: "Полный SPA", price: "от 2 000 ₽" },
-    ],
-    color: "#FF6B6B",
+    emoji: "🍃",
+    title: "Экспресс-линька для кошек",
+    sub: "быстро и бережно",
+    price: "1 500 ₽",
   },
   {
-    icon: "Heart",
-    title: "Гигиенические процедуры",
-    desc: "Стрижка когтей, чистка ушей, зубов",
-    prices: [
-      { name: "Когти", price: "от 300 ₽" },
-      { name: "Уши + зубы", price: "от 400 ₽" },
-      { name: "Комплекс", price: "от 600 ₽" },
-    ],
-    color: "#8B5CF6",
+    emoji: "✨",
+    title: "SPA с озонированием",
+    sub: "глубокое восстановление",
+    price: "+800 ₽",
   },
-];
-
-const masters = [
-  { name: "Анна Королёва", exp: "8 лет опыта", spec: "Пудели, мальтезе, йорки", emoji: "👩‍🦰" },
-  { name: "Михаил Озёров", exp: "6 лет опыта", spec: "Крупные породы, хаски", emoji: "👨‍🦱" },
-  { name: "Дарья Лисина", exp: "5 лет опыта", spec: "Кошки всех пород", emoji: "👩‍🦳" },
 ];
 
 const whyUs = [
-  { icon: "Award", title: "Сертифицированные мастера", desc: "Все грумеры прошли международную сертификацию и любят животных" },
-  { icon: "Clock", title: "Запись онлайн 24/7", desc: "Выбирайте удобное время без звонков и ожиданий на линии" },
-  { icon: "Shield", title: "Безопасные средства", desc: "Только гипоаллергенная косметика без вредных компонентов" },
-  { icon: "Camera", title: "Фото до и после", desc: "Отправляем фотографии питомца на WhatsApp по завершению" },
-  { icon: "Star", title: "Рейтинг 4.9 из 5", desc: "Более 500 довольных клиентов доверяют нам своих питомцев" },
-  { icon: "MapPin", title: "Удобное расположение", desc: "В центре города, рядом с метро, парковка для клиентов" },
+  { emoji: "🔒", title: "Безопасно, серьёзно", desc: "Ножницы и машинки проходят автоклав. Как в больнице, только вкуснее пахнет." },
+  { emoji: "🧘‍♀️", title: "Без стресса вообще", desc: "Хотите перерыв? Сделаем. Не нравится? Остановимся. Угостим печенькой (питомца, не вас)." },
+  { emoji: "📸", title: "Вы всё видите", desc: "Смотрите стрижку из дома по камере. Никаких тайн." },
+  { emoji: "🩺", title: "Здоровье под контролем", desc: "Перед процедурой питомца посмотрит ветеринар. Спокойно и бесплатно." },
+  { emoji: "💎", title: "Только хорошая косметика", desc: "Iv San Bernard, Bio-Groom — без химии и аллергии." },
 ];
 
 const reviews = [
-  { name: "Светлана М.", pet: "Бишон Фризе Буся", text: "Обожаем этот салон! Бусю здесь всегда ждут с улыбкой, результат каждый раз лучше ожиданий. Анна — просто волшебница ножниц!", stars: 5 },
-  { name: "Игорь К.", pet: "Хаски Гром", text: "Михаил отлично справляется с нашим непоседой. Гром обычно боится груминга, но здесь ведёт себя спокойно. Виден профессиональный подход.", stars: 5 },
-  { name: "Мария Т.", pet: "Кот Персик", text: "Сдала кота на стрижку, переживала очень. Отдали ухоженного, довольного, без стресса. Дарья — молодец! Теперь ходим только сюда.", stars: 5 },
-  { name: "Алексей В.", pet: "Пудель Шарли", text: "Записался через сайт — очень удобно. Стрижка идеальная, всё чисто, запах приятный. Цены адекватные для такого качества.", stars: 5 },
+  { stars: 5, text: "«Наш корги-кусака наконец-то подстригся без скандала. Ребята — волшебники. Спасибо за терпение!»", author: "Анна и корги Сева" },
+  { stars: 5, text: "«Кошка после переезда была сама не своя. В Gold Clipper её поняли, делали всё с перерывами. Выглядит шикарно, настроение хорошее.»", author: "Михаил и кошка Мотя" },
+  { stars: 5, text: "«Для моего старого пса стрижка всегда была пыткой. А тут — спокойно, нежно. Вы чудо. Спасибо!»", author: "Елена и той-терьер Боня" },
 ];
 
 const faq = [
-  { q: "Как долго длится груминг?", a: "Зависит от породы и выбранных услуг. Комплексный груминг маленькой породы — 1.5–2 часа, крупной — до 4 часов. Точное время уточняем при записи." },
-  { q: "Нужно ли записываться заранее?", a: "Да, мы работаем по записи. Это гарантирует, что мастер уделит вашему питомцу всё необходимое время и внимание." },
-  { q: "Что делать, если питомец боится груминга?", a: "Наши мастера умеют работать с тревожными животными. Используем мягкий подход, делаем паузы. Можно обсудить особенности вашего питомца при записи." },
-  { q: "Принимаете ли вы кошек?", a: "Да! У нас есть отдельный мастер по кошачьему грумингу. Работаем со всеми породами, включая длинношёрстных и экзотических." },
-  { q: "Какие средства используете?", a: "Только профессиональная гипоаллергенная косметика: iv san bernard, Bio-Groom. Без парабенов и SLS." },
-  { q: "Есть ли скидки для постоянных клиентов?", a: "Да! После 5-го визита вы получаете карту постоянного клиента со скидкой 10% на все услуги." },
+  { q: "А если моя собака кусается?", a: "Бывает. Наденем намордник, будем аккуратны. Только предупредите нас заранее, ладно?" },
+  { q: "Что, если питомец испугается?", a: "Сразу остановимся. Дадим отдохнуть, погладим, угостим. Ветврач под боком." },
+  { q: "Можно постоять рядом?", a: "Лучше через стекло или онлайн. Мы заметили: когда хозяин рядом, питомец отвлекается и нервничает больше." },
+  { q: "Инструменты моют вообще?", a: "Не просто моют — стерилизуют. После каждого хвостика." },
+  { q: "Скидки будут?", a: "Конечно. Придёте 5 раз — 6-й в подарок. Любим постоянных клиентов." },
 ];
 
-const bookingSlots = ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"];
+const navLinks = [
+  { href: "#services", label: "Что умеем" },
+  { href: "#why-us", label: "Почему мы" },
+  { href: "#faq", label: "Вопросы" },
+  { href: "#reviews", label: "Хвасталки" },
+  { href: "#booking", label: "Запись" },
+];
 
 export default function Index() {
-  const [selectedService, setSelectedService] = useState("");
-  const [selectedMaster, setSelectedMaster] = useState("");
-  const [selectedTime, setSelectedTime] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [petType, setPetType] = useState("");
 
-  const navLinks = [
-    { href: "#for-whom", label: "Для кого" },
-    { href: "#services", label: "Услуги" },
-    { href: "#why-us", label: "О нас" },
-    { href: "#reviews", label: "Отзывы" },
-    { href: "#booking", label: "Запись" },
-  ];
+  const scrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
-    <div className="min-h-screen overflow-x-hidden" style={{ backgroundColor: "var(--cream)" }}>
+    <div className="min-h-screen overflow-x-hidden" style={{ backgroundColor: C.bg, color: C.dark }}>
 
-      {/* HEADER */}
-      <header className="fixed top-0 left-0 right-0 z-50" style={{ backgroundColor: "var(--dark)", borderBottom: "1px solid rgba(245,166,35,0.2)" }}>
-        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <a href="#" className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold" style={{ background: "var(--gold)", color: "var(--dark)" }}>
+      {/* ── HEADER ── */}
+      <header
+        className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md"
+        style={{ backgroundColor: "rgba(244,252,249,0.92)", borderBottom: `1px solid ${C.mintLight}` }}
+      >
+        <div className="max-w-7xl mx-auto px-5 h-16 flex items-center justify-between gap-4">
+          {/* Logo */}
+          <a href="#" className="flex items-center gap-2 shrink-0">
+            <div className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold" style={{ backgroundColor: C.mint, color: C.white }}>
               GC
             </div>
-            <span className="font-display text-xl font-bold tracking-wider" style={{ color: "var(--gold)" }}>
-              GOLD CLIPPER
+            <span className="font-heading text-lg font-bold" style={{ color: C.dark }}>
+              Gold Clipper ✨
             </span>
           </a>
 
-          <nav className="hidden md:flex items-center gap-8">
+          {/* Nav */}
+          <nav className="hidden lg:flex items-center gap-6">
             {navLinks.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
-                className="font-body text-sm font-medium transition-colors"
-                style={{ color: "rgba(255,255,255,0.7)" }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--gold)")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.7)")}
+                className="font-body text-sm font-medium transition-colors hover:text-mint"
+                style={{ color: "rgba(46,74,58,0.7)" }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = C.mint)}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(46,74,58,0.7)")}
               >
                 {l.label}
               </a>
             ))}
           </nav>
 
-          <a
-            href="#booking"
-            className="hidden md:block px-5 py-2 rounded-full text-sm font-semibold font-body transition-all hover:scale-105"
-            style={{ background: "var(--gold)", color: "var(--dark)" }}
-          >
-            Записаться
-          </a>
+          {/* Contacts + CTA */}
+          <div className="hidden md:flex items-center gap-4">
+            <a href="tel:+79991234567" className="font-body text-sm font-medium" style={{ color: C.dark }}>
+              📞 +7 (999) 123-45-67
+            </a>
+            <a href="https://t.me/gold_clipper" className="font-body text-sm" style={{ color: C.mint }}>
+              ✉️ @gold_clipper
+            </a>
+            <a
+              href="#booking"
+              className="px-4 py-2 rounded-full text-sm font-semibold font-body transition-all hover:scale-105 animate-pulse-mint"
+              style={{ backgroundColor: C.mint, color: C.white }}
+            >
+              🐾 Записать хвостика
+            </a>
+          </div>
 
-          <button
-            className="md:hidden p-2"
-            style={{ color: "var(--gold)" }}
-            onClick={() => setMenuOpen(!menuOpen)}
-          >
-            <Icon name={menuOpen ? "X" : "Menu"} size={24} />
+          <button className="lg:hidden p-2" style={{ color: C.mint }} onClick={() => setMenuOpen(!menuOpen)}>
+            <Icon name={menuOpen ? "X" : "Menu"} size={22} />
           </button>
         </div>
 
         {menuOpen && (
-          <div className="md:hidden px-6 py-4 flex flex-col gap-4" style={{ backgroundColor: "var(--dark-mid)" }}>
+          <div className="lg:hidden px-5 py-4 flex flex-col gap-3" style={{ backgroundColor: C.white, borderTop: `1px solid ${C.mintLight}` }}>
             {navLinks.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                className="font-body text-base font-medium py-1"
-                style={{ color: "rgba(255,255,255,0.85)" }}
-                onClick={() => setMenuOpen(false)}
-              >
+              <a key={l.href} href={l.href} className="font-body text-base py-1" style={{ color: C.dark }} onClick={() => setMenuOpen(false)}>
                 {l.label}
               </a>
             ))}
             <a
               href="#booking"
-              className="mt-2 text-center px-5 py-3 rounded-full font-semibold"
-              style={{ background: "var(--gold)", color: "var(--dark)" }}
+              className="mt-1 text-center px-5 py-3 rounded-full font-semibold font-body"
+              style={{ backgroundColor: C.mint, color: C.white }}
               onClick={() => setMenuOpen(false)}
             >
-              Записаться
+              🐾 Записать хвостика
             </a>
           </div>
         )}
       </header>
 
-      {/* HERO */}
-      <section className="relative min-h-screen flex items-center pt-16 overflow-hidden" style={{ backgroundColor: "var(--dark)" }}>
-        <div className="absolute inset-0 opacity-20" style={{ background: "radial-gradient(ellipse at 70% 50%, rgba(245,166,35,0.4) 0%, transparent 60%)" }} />
-        <div className="absolute top-16 right-0 w-1/2 h-full opacity-40 hidden lg:block">
-          <img src={HERO_IMAGE} alt="Груминг салон" className="w-full h-full object-cover object-center" style={{ maskImage: "linear-gradient(to left, rgba(0,0,0,0.9), transparent)" }} />
-        </div>
+      {/* ── HERO ── */}
+      <section className="relative pt-16 min-h-screen flex items-center overflow-hidden">
+        {/* decorative blob */}
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full opacity-40 pointer-events-none" style={{ background: `radial-gradient(circle, ${C.mintLight}, transparent 70%)`, transform: "translate(30%, -20%)" }} />
+        <div className="absolute bottom-0 left-0 w-[300px] h-[300px] rounded-full opacity-25 pointer-events-none" style={{ background: `radial-gradient(circle, ${C.mintMid}, transparent 70%)`, transform: "translate(-30%, 30%)" }} />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 py-20 lg:py-0">
-          <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6 border text-xs font-medium font-body animate-fade-in-up" style={{ borderColor: "rgba(245,166,35,0.4)", color: "var(--gold)", backgroundColor: "rgba(245,166,35,0.1)" }}>
-              <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: "var(--gold)" }} />
-              Профессиональный груминг в Москве
+        <div className="relative z-10 max-w-7xl mx-auto px-6 py-24">
+          <div className="max-w-3xl">
+            <div
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold font-body mb-6 animate-fade-in-up"
+              style={{ backgroundColor: C.mintMid, color: C.mint }}
+            >
+              <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: C.mint }} />
+              Груминг-салон в Москве
             </div>
 
-            <h1 className="font-display text-6xl md:text-8xl font-bold leading-none mb-6 animate-fade-in-up delay-100" style={{ color: "#fff" }}>
-              ВАШИ<br />
-              <span className="shimmer-text">ПИТОМЦЫ</span><br />
-              ЗАСЛУЖИВАЮТ<br />
-              <span style={{ color: "var(--gold)" }}>ЛУЧШЕГО</span>
+            <h1
+              className="font-heading text-5xl md:text-7xl font-bold leading-tight mb-6 animate-fade-in-up delay-100"
+              style={{ color: C.dark }}
+            >
+              Gold Clipper —<br />
+              груминг, который<br />
+              <span style={{ color: C.mint }}>не пугает</span> 🐶🐱
             </h1>
 
-            <p className="font-body text-lg md:text-xl mb-10 leading-relaxed animate-fade-in-up delay-200" style={{ color: "rgba(255,255,255,0.7)" }}>
-              Профессиональный уход, любовь к животным и результат, который покорит вас с первого взгляда
+            <p
+              className="font-body text-xl leading-relaxed mb-10 animate-fade-in-up delay-200"
+              style={{ color: "rgba(46,74,58,0.75)", maxWidth: "560px" }}
+            >
+              Стрижём, моем, любим. Без стресса, без криков, без успокоительных.
+              А вы смотрите онлайн и не волнуетесь.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up delay-300">
               <a
                 href="#booking"
-                className="px-8 py-4 rounded-full font-semibold font-body text-lg text-center transition-all hover:scale-105 hover:shadow-2xl animate-pulse-gold"
-                style={{ background: "var(--gold)", color: "var(--dark)" }}
+                className="px-8 py-4 rounded-full font-semibold font-body text-lg text-center transition-all hover:scale-105 hover:shadow-xl"
+                style={{ backgroundColor: C.mint, color: C.white }}
               >
-                Записаться онлайн
+                🧡 Записаться сейчас
               </a>
               <a
                 href="#services"
-                className="px-8 py-4 rounded-full font-semibold font-body text-lg text-center border transition-all hover:scale-105"
-                style={{ borderColor: "rgba(255,255,255,0.3)", color: "#fff", backgroundColor: "rgba(255,255,255,0.05)" }}
+                className="px-8 py-4 rounded-full font-semibold font-body text-lg text-center border-2 transition-all hover:scale-105"
+                style={{ borderColor: C.mintLight, color: C.dark, backgroundColor: "transparent" }}
               >
                 Смотреть услуги
               </a>
             </div>
 
-            <div className="flex items-center gap-8 mt-12 animate-fade-in-up delay-400">
-              <div>
-                <div className="font-display text-3xl font-bold" style={{ color: "var(--gold)" }}>500+</div>
-                <div className="font-body text-sm" style={{ color: "rgba(255,255,255,0.5)" }}>довольных клиентов</div>
-              </div>
-              <div className="w-px h-10" style={{ backgroundColor: "rgba(255,255,255,0.15)" }} />
-              <div>
-                <div className="font-display text-3xl font-bold" style={{ color: "var(--gold)" }}>4.9★</div>
-                <div className="font-body text-sm" style={{ color: "rgba(255,255,255,0.5)" }}>рейтинг салона</div>
-              </div>
-              <div className="w-px h-10" style={{ backgroundColor: "rgba(255,255,255,0.15)" }} />
-              <div>
-                <div className="font-display text-3xl font-bold" style={{ color: "var(--gold)" }}>3</div>
-                <div className="font-body text-sm" style={{ color: "rgba(255,255,255,0.5)" }}>мастера-эксперта</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-float">
-          <a href="#for-whom" style={{ color: "rgba(255,255,255,0.3)" }}>
-            <Icon name="ChevronDown" size={32} />
-          </a>
-        </div>
-      </section>
-
-      {/* FOR WHOM */}
-      <section id="for-whom" className="py-24 relative" style={{ backgroundColor: "var(--cream)" }}>
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <div className="font-body text-sm font-semibold tracking-widest mb-3 uppercase" style={{ color: "var(--gold)" }}>Для кого</div>
-            <h2 className="font-display text-5xl md:text-6xl font-bold" style={{ color: "var(--dark)" }}>
-              МЫ ЛЮБИМ<br /><span style={{ color: "var(--gold)" }}>ВСЕХ ПИТОМЦЕВ</span>
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              { emoji: "🐩", title: "Собаки", desc: "Все породы от чихуахуа до сенбернара. Стрижки по стандарту и авторские", count: "60+ пород" },
-              { emoji: "🐱", title: "Кошки", desc: "Длинношёрстные, короткошёрстные, экзотические. Мягкий безстрессовый груминг", count: "30+ пород" },
-              { emoji: "🐇", title: "Кролики и грызуны", desc: "Нежный уход для маленьких пушистиков, чистка и стрижка коготков", count: "все виды" },
-            ].map((item, i) => (
-              <div
-                key={i}
-                className="group relative p-8 rounded-3xl hover-lift cursor-default overflow-hidden"
-                style={{ backgroundColor: i === 1 ? "var(--dark)" : "#fff", border: "1px solid rgba(0,0,0,0.06)" }}
-              >
-                <div className="absolute top-0 right-0 w-32 h-32 rounded-full opacity-5 -translate-y-8 translate-x-8" style={{ backgroundColor: "var(--gold)" }} />
-                <div className="text-5xl mb-4">{item.emoji}</div>
-                <h3 className="font-display text-3xl font-bold mb-3" style={{ color: i === 1 ? "#fff" : "var(--dark)" }}>
-                  {item.title}
-                </h3>
-                <p className="font-body text-base leading-relaxed mb-4" style={{ color: i === 1 ? "rgba(255,255,255,0.65)" : "rgba(26,18,8,0.6)" }}>
-                  {item.desc}
-                </p>
-                <div className="inline-block px-3 py-1 rounded-full text-xs font-semibold font-body" style={{ backgroundColor: "rgba(245,166,35,0.15)", color: "var(--gold-dark)" }}>
-                  {item.count}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* SERVICES & PRICES */}
-      <section id="services" className="py-24" style={{ backgroundColor: "var(--dark)" }}>
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <div className="font-body text-sm font-semibold tracking-widest mb-3 uppercase" style={{ color: "var(--gold)" }}>Услуги</div>
-            <h2 className="font-display text-5xl md:text-6xl font-bold" style={{ color: "#fff" }}>
-              УСЛУГИ И <span style={{ color: "var(--gold)" }}>ЦЕНЫ</span>
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
-            {services.map((s, i) => (
-              <div
-                key={i}
-                className="p-6 rounded-3xl hover-lift cursor-default relative overflow-hidden transition-all"
-                style={{ backgroundColor: "#fff", border: "2px solid transparent" }}
-                onMouseEnter={(e) => (e.currentTarget.style.borderColor = s.color)}
-                onMouseLeave={(e) => (e.currentTarget.style.borderColor = "transparent")}
-              >
-                <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-5" style={{ backgroundColor: `${s.color}20` }}>
-                  <Icon name={s.icon} size={22} fallback="Star" />
-                </div>
-                <h3 className="font-display text-xl font-bold mb-2" style={{ color: "var(--dark)" }}>{s.title}</h3>
-                <p className="font-body text-sm mb-5 leading-relaxed" style={{ color: "rgba(26,18,8,0.6)" }}>{s.desc}</p>
-                <div className="space-y-2">
-                  {s.prices.map((p, j) => (
-                    <div key={j} className="flex items-center justify-between">
-                      <span className="font-body text-xs" style={{ color: "rgba(26,18,8,0.55)" }}>{p.name}</span>
-                      <span className="font-display text-sm font-bold" style={{ color: s.color }}>{p.price}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center mt-10">
-            <p className="font-body text-sm" style={{ color: "rgba(255,255,255,0.4)" }}>
-              * Точная стоимость рассчитывается при записи с учётом породы и состояния шерсти
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* WHY GOLD CLIPPER */}
-      <section id="why-us" className="py-24" style={{ backgroundColor: "var(--cream)" }}>
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <div className="font-body text-sm font-semibold tracking-widest mb-3 uppercase" style={{ color: "var(--gold)" }}>Почему мы</div>
-              <h2 className="font-display text-5xl md:text-6xl font-bold leading-tight mb-6" style={{ color: "var(--dark)" }}>
-                ПОЧЕМУ<br /><span style={{ color: "var(--gold)" }}>GOLD</span><br />CLIPPER
-              </h2>
-              <p className="font-body text-lg leading-relaxed mb-8" style={{ color: "rgba(26,18,8,0.65)" }}>
-                Мы не просто стрижём — мы создаём образ. Каждый питомец для нас особенный, и мы подходим к каждому индивидуально.
-              </p>
-              <a
-                href="#booking"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold font-body transition-all hover:scale-105"
-                style={{ background: "var(--gold)", color: "var(--dark)" }}
-              >
-                Записаться <Icon name="ArrowRight" size={18} />
-              </a>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              {whyUs.map((item, i) => (
+            {/* Trust badges */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-14 animate-fade-in-up delay-400">
+              {[
+                { emoji: "🧼", text: "Чисто как в операционной" },
+                { emoji: "📱", text: "Вы всё видите по видео" },
+                { emoji: "😌", text: "Никаких «усыпляй»" },
+                { emoji: "🩺", text: "Ветврач проверит бесплатно" },
+              ].map((b, i) => (
                 <div
                   key={i}
-                  className="p-5 rounded-2xl hover-lift"
-                  style={{ backgroundColor: i % 3 === 1 ? "var(--dark)" : "#fff", border: "1px solid rgba(0,0,0,0.06)" }}
+                  className="flex flex-col items-center text-center p-4 rounded-2xl font-body text-sm font-medium gap-2"
+                  style={{ backgroundColor: C.white, border: `1.5px solid ${C.mintLight}`, color: C.dark }}
                 >
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style={{ backgroundColor: "rgba(245,166,35,0.15)" }}>
-                    <Icon name={item.icon} size={20} fallback="Star" />
-                  </div>
-                  <h4 className="font-display text-base font-bold mb-1" style={{ color: i % 3 === 1 ? "#fff" : "var(--dark)" }}>
-                    {item.title}
-                  </h4>
-                  <p className="font-body text-xs leading-relaxed" style={{ color: i % 3 === 1 ? "rgba(255,255,255,0.55)" : "rgba(26,18,8,0.55)" }}>
-                    {item.desc}
-                  </p>
+                  <span className="text-2xl">{b.emoji}</span>
+                  {b.text}
                 </div>
               ))}
             </div>
           </div>
         </div>
+
+        <a href="#for-whom" className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-float" style={{ color: C.mintLight }}>
+          <Icon name="ChevronDown" size={30} />
+        </a>
       </section>
 
-      {/* MASTERS */}
-      <section className="py-24" style={{ background: "linear-gradient(135deg, var(--dark) 0%, #2C1F0A 100%)" }}>
+      {/* ── FOR WHOM ── */}
+      <section id="for-whom" className="py-24" style={{ backgroundColor: C.white }}>
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <div className="font-body text-sm font-semibold tracking-widest mb-3 uppercase" style={{ color: "var(--gold)" }}>Команда</div>
-            <h2 className="font-display text-5xl md:text-6xl font-bold" style={{ color: "#fff" }}>
-              НАШИ <span style={{ color: "var(--gold)" }}>МАСТЕРА</span>
-            </h2>
+          <div className="text-center mb-14">
+            <div className="font-body text-sm font-semibold tracking-widest uppercase mb-3" style={{ color: C.mint }}>Для кого</div>
+            <h2 className="font-heading text-4xl md:text-5xl" style={{ color: C.dark }}>Кого мы обожаем</h2>
+            <p className="font-body text-lg mt-4" style={{ color: "rgba(46,74,58,0.65)", maxWidth: 500, margin: "16px auto 0" }}>
+              Всех! Даже если ваш пёс — маленький дракон, а кошка считает себя тигром.
+            </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            {masters.map((m, i) => (
-              <div key={i} className="text-center p-8 rounded-3xl hover-lift" style={{ backgroundColor: "rgba(255,255,255,0.05)", border: "1px solid rgba(245,166,35,0.15)" }}>
-                <div className="text-6xl mb-4">{m.emoji}</div>
-                <h3 className="font-display text-2xl font-bold mb-1" style={{ color: "#fff" }}>{m.name}</h3>
-                <div className="font-body text-sm mb-2" style={{ color: "var(--gold)" }}>{m.exp}</div>
-                <p className="font-body text-sm" style={{ color: "rgba(255,255,255,0.5)" }}>Специализация: {m.spec}</p>
+            {[
+              { emoji: "🐕", title: "Собаки", desc: "от чихуа до кане-корсо", extra: "Любая порода, любой характер" },
+              { emoji: "🐈", title: "Кошки с характером", desc: "независимые и нежные", extra: "Мягкий подход к каждой" },
+              { emoji: "🦸‍♂️", title: "Особенные питомцы", desc: "боятся, кусаются, грустят", extra: "Особое внимание и терпение" },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="p-8 rounded-3xl hover-lift"
+                style={{
+                  backgroundColor: i === 1 ? C.mint : C.bg,
+                  border: `1.5px solid ${i === 1 ? C.mint : C.mintLight}`,
+                }}
+              >
+                <div className="text-5xl mb-5">{item.emoji}</div>
+                <h3 className="font-heading text-2xl mb-2" style={{ color: i === 1 ? C.white : C.dark }}>{item.title}</h3>
+                <p className="font-body text-base mb-1" style={{ color: i === 1 ? "rgba(255,255,255,0.8)" : "rgba(46,74,58,0.65)" }}>{item.desc}</p>
+                <p className="font-body text-sm" style={{ color: i === 1 ? "rgba(255,255,255,0.6)" : C.mint }}>{item.extra}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* FAQ */}
-      <section id="faq" className="py-24" style={{ backgroundColor: "var(--cream)" }}>
-        <div className="max-w-3xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <div className="font-body text-sm font-semibold tracking-widest mb-3 uppercase" style={{ color: "var(--gold)" }}>FAQ</div>
-            <h2 className="font-display text-5xl md:text-6xl font-bold" style={{ color: "var(--dark)" }}>
-              ЧАСТЫЕ <span style={{ color: "var(--gold)" }}>ВОПРОСЫ</span>
+      {/* ── SERVICES ── */}
+      <section id="services" className="py-24" style={{ backgroundColor: C.bg }}>
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-14">
+            <div className="font-body text-sm font-semibold tracking-widest uppercase mb-3" style={{ color: C.mint }}>Услуги</div>
+            <h2 className="font-heading text-4xl md:text-5xl" style={{ color: C.dark }}>Что мы умеем (и любим)</h2>
+            <p className="font-body text-base mt-4" style={{ color: "rgba(46,74,58,0.6)" }}>
+              Цену скажем после знакомства. Обещаем без сюрпризов в чеке.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-5">
+            {services.map((s, i) => (
+              <div
+                key={i}
+                className="p-7 rounded-3xl hover-lift flex flex-col"
+                style={{ backgroundColor: C.white, border: `1.5px solid ${C.mintLight}` }}
+              >
+                <div className="text-4xl mb-5">{s.emoji}</div>
+                <h3 className="font-heading text-xl mb-1" style={{ color: C.dark }}>{s.title}</h3>
+                <p className="font-body text-sm mb-4" style={{ color: "rgba(46,74,58,0.6)" }}>{s.sub}</p>
+                <div className="mt-auto">
+                  <div className="font-heading text-2xl font-bold mb-4" style={{ color: C.mint }}>{s.price}</div>
+                  <a
+                    href="#booking"
+                    className="block text-center w-full py-2.5 rounded-xl font-body text-sm font-semibold transition-all hover:scale-105"
+                    style={{ backgroundColor: C.mintMid, color: C.dark }}
+                    onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = C.mint; e.currentTarget.style.color = C.white; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = C.mintMid; e.currentTarget.style.color = C.dark; }}
+                  >
+                    🐾 Хочу так же
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── WHY US ── */}
+      <section id="why-us" className="py-24" style={{ backgroundColor: C.white }}>
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-14">
+            <div className="font-body text-sm font-semibold tracking-widest uppercase mb-3" style={{ color: C.mint }}>Почему мы</div>
+            <h2 className="font-heading text-4xl md:text-5xl" style={{ color: C.dark }}>
+              Почему мурлыки и хвостики нас любят
             </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {whyUs.map((item, i) => (
+              <div
+                key={i}
+                className={`p-7 rounded-3xl hover-lift ${i === 2 ? "lg:col-span-1" : ""}`}
+                style={{
+                  backgroundColor: i === 0 ? C.mint : i === 3 ? C.mintMid : C.bg,
+                  border: `1.5px solid ${C.mintLight}`,
+                }}
+              >
+                <div className="text-4xl mb-4">{item.emoji}</div>
+                <h3 className="font-heading text-xl mb-2" style={{ color: i === 0 ? C.white : C.dark }}>{item.title}</h3>
+                <p className="font-body text-sm leading-relaxed" style={{ color: i === 0 ? "rgba(255,255,255,0.8)" : "rgba(46,74,58,0.65)" }}>
+                  {item.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── FAQ ── */}
+      <section id="faq" className="py-24" style={{ backgroundColor: C.bg }}>
+        <div className="max-w-3xl mx-auto px-6">
+          <div className="text-center mb-14">
+            <div className="font-body text-sm font-semibold tracking-widest uppercase mb-3" style={{ color: C.mint }}>FAQ</div>
+            <h2 className="font-heading text-4xl md:text-5xl" style={{ color: C.dark }}>Что вас волнует? Спросите 🤓</h2>
           </div>
 
           <Accordion type="single" collapsible className="space-y-3">
             {faq.map((item, i) => (
               <AccordionItem
                 key={i}
-                value={`item-${i}`}
-                className="rounded-2xl overflow-hidden border-0 px-6"
-                style={{ backgroundColor: "#fff" }}
+                value={`faq-${i}`}
+                className="rounded-2xl overflow-hidden px-6 border-0"
+                style={{ backgroundColor: C.white, border: `1.5px solid ${C.mintLight}` }}
               >
-                <AccordionTrigger className="font-display text-lg font-semibold py-5 hover:no-underline" style={{ color: "var(--dark)" }}>
+                <AccordionTrigger
+                  className="font-heading text-lg py-5 hover:no-underline text-left"
+                  style={{ color: C.dark }}
+                >
                   {item.q}
                 </AccordionTrigger>
-                <AccordionContent className="font-body text-base pb-5 leading-relaxed" style={{ color: "rgba(26,18,8,0.65)" }}>
+                <AccordionContent className="font-body text-base pb-5 leading-relaxed" style={{ color: "rgba(46,74,58,0.7)" }}>
                   {item.a}
                 </AccordionContent>
               </AccordionItem>
@@ -423,194 +368,188 @@ export default function Index() {
         </div>
       </section>
 
-      {/* REVIEWS */}
-      <section id="reviews" className="py-24" style={{ backgroundColor: "var(--dark)" }}>
+      {/* ── REVIEWS ── */}
+      <section id="reviews" className="py-24" style={{ backgroundColor: C.white }}>
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <div className="font-body text-sm font-semibold tracking-widest mb-3 uppercase" style={{ color: "var(--gold)" }}>Отзывы</div>
-            <h2 className="font-display text-5xl md:text-6xl font-bold" style={{ color: "#fff" }}>
-              ЧТО ГОВОРЯТ <span style={{ color: "var(--gold)" }}>КЛИЕНТЫ</span>
-            </h2>
+          <div className="text-center mb-14">
+            <div className="font-body text-sm font-semibold tracking-widest uppercase mb-3" style={{ color: C.mint }}>Хвасталки</div>
+            <h2 className="font-heading text-4xl md:text-5xl" style={{ color: C.dark }}>Что говорят счастливые хозяева</h2>
           </div>
 
-          <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-5">
+          <div className="grid md:grid-cols-3 gap-5 mb-10">
             {reviews.map((r, i) => (
-              <div key={i} className="p-6 rounded-3xl hover-lift" style={{ backgroundColor: i === 1 ? "rgba(245,166,35,0.12)" : "rgba(255,255,255,0.05)", border: i === 1 ? "1px solid rgba(245,166,35,0.3)" : "1px solid rgba(255,255,255,0.05)" }}>
-                <div className="flex gap-0.5 mb-4">
+              <div
+                key={i}
+                className="p-7 rounded-3xl hover-lift"
+                style={{
+                  backgroundColor: i === 1 ? C.mint : C.bg,
+                  border: `1.5px solid ${i === 1 ? C.mint : C.mintLight}`,
+                }}
+              >
+                <div className="flex gap-0.5 mb-4 text-lg">
                   {Array.from({ length: r.stars }).map((_, j) => (
-                    <span key={j} style={{ color: "var(--gold)" }}>★</span>
+                    <span key={j} style={{ color: i === 1 ? "#FFE68A" : C.peach }}>★</span>
                   ))}
                 </div>
-                <p className="font-body text-sm leading-relaxed mb-5" style={{ color: "rgba(255,255,255,0.75)" }}>
-                  "{r.text}"
+                <p className="font-body text-base leading-relaxed mb-5 italic" style={{ color: i === 1 ? "rgba(255,255,255,0.88)" : "rgba(46,74,58,0.8)" }}>
+                  {r.text}
                 </p>
-                <div>
-                  <div className="font-display text-base font-bold" style={{ color: "#fff" }}>{r.name}</div>
-                  <div className="font-body text-xs mt-0.5" style={{ color: "var(--gold)" }}>{r.pet}</div>
+                <div className="font-body text-sm font-semibold" style={{ color: i === 1 ? "rgba(255,255,255,0.7)" : C.mint }}>
+                  — {r.author}
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="mt-10 p-6 rounded-2xl text-center" style={{ backgroundColor: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.06)" }}>
-            <img src={DOG_IMAGE} alt="Довольный питомец" className="w-24 h-24 rounded-full mx-auto mb-4 object-cover" style={{ border: "3px solid var(--gold)" }} />
-            <p className="font-display text-xl font-semibold" style={{ color: "#fff" }}>Ваш питомец — следующий счастливчик!</p>
+          <div
+            className="text-center p-6 rounded-2xl font-body text-base"
+            style={{ backgroundColor: C.mintMid, color: C.dark }}
+          >
+            Наш рейтинг: <strong>5.0</strong> на Яндекс.Картах (можете проверить 😉)
           </div>
         </div>
       </section>
 
-      {/* BOOKING */}
-      <section id="booking" className="py-24" style={{ backgroundColor: "var(--cream)" }}>
-        <div className="max-w-2xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <div className="font-body text-sm font-semibold tracking-widest mb-3 uppercase" style={{ color: "var(--gold)" }}>Запись</div>
-            <h2 className="font-display text-5xl md:text-6xl font-bold mb-4" style={{ color: "var(--dark)" }}>
-              ЗАПИСАТЬСЯ<br /><span style={{ color: "var(--gold)" }}>ОНЛАЙН</span>
-            </h2>
-            <p className="font-body text-base" style={{ color: "rgba(26,18,8,0.6)" }}>Выберите услугу, мастера и удобное время</p>
+      {/* ── BOOKING ── */}
+      <section id="booking" className="py-24" style={{ backgroundColor: C.bg }}>
+        <div className="max-w-xl mx-auto px-6">
+          <div className="text-center mb-10">
+            <div className="font-body text-sm font-semibold tracking-widest uppercase mb-3" style={{ color: C.mint }}>Запись</div>
+            <h2 className="font-heading text-4xl md:text-5xl mb-3" style={{ color: C.dark }}>Давайте знакомиться 🐾</h2>
           </div>
 
-          <div className="rounded-3xl p-8 md:p-10 shadow-2xl" style={{ backgroundColor: "#fff" }}>
-            <div className="space-y-6">
+          <div className="rounded-3xl p-8 shadow-lg" style={{ backgroundColor: C.white, border: `1.5px solid ${C.mintLight}` }}>
+            <div className="space-y-5">
+              {/* Name */}
               <div>
-                <label className="font-display text-sm font-semibold block mb-2 tracking-wide" style={{ color: "var(--dark)" }}>ВАШЕ ИМЯ</label>
+                <label className="font-body text-sm font-semibold block mb-2" style={{ color: C.dark }}>Ваше имя</label>
                 <input
                   type="text"
                   placeholder="Иван Иванов"
                   className="w-full px-4 py-3 rounded-xl font-body text-base outline-none transition-all"
-                  style={{ backgroundColor: "var(--cream)", border: "2px solid transparent" }}
-                  onFocus={(e) => (e.currentTarget.style.borderColor = "var(--gold)")}
-                  onBlur={(e) => (e.currentTarget.style.borderColor = "transparent")}
+                  style={{ backgroundColor: C.bg, border: `2px solid ${C.mintLight}` }}
+                  onFocus={(e) => (e.currentTarget.style.borderColor = C.mint)}
+                  onBlur={(e) => (e.currentTarget.style.borderColor = C.mintLight)}
                 />
               </div>
 
+              {/* Phone */}
               <div>
-                <label className="font-display text-sm font-semibold block mb-2 tracking-wide" style={{ color: "var(--dark)" }}>ТЕЛЕФОН</label>
+                <label className="font-body text-sm font-semibold block mb-2" style={{ color: C.dark }}>Телефон или Telegram</label>
                 <input
-                  type="tel"
-                  placeholder="+7 (999) 123-45-67"
+                  type="text"
+                  placeholder="+7 (999) 123-45-67 или @username"
                   className="w-full px-4 py-3 rounded-xl font-body text-base outline-none transition-all"
-                  style={{ backgroundColor: "var(--cream)", border: "2px solid transparent" }}
-                  onFocus={(e) => (e.currentTarget.style.borderColor = "var(--gold)")}
-                  onBlur={(e) => (e.currentTarget.style.borderColor = "transparent")}
+                  style={{ backgroundColor: C.bg, border: `2px solid ${C.mintLight}` }}
+                  onFocus={(e) => (e.currentTarget.style.borderColor = C.mint)}
+                  onBlur={(e) => (e.currentTarget.style.borderColor = C.mintLight)}
                 />
               </div>
 
+              {/* Pet type */}
               <div>
-                <label className="font-display text-sm font-semibold block mb-3 tracking-wide" style={{ color: "var(--dark)" }}>УСЛУГА</label>
-                <div className="grid grid-cols-2 gap-2">
-                  {services.map((s) => (
+                <label className="font-body text-sm font-semibold block mb-2" style={{ color: C.dark }}>Собака или кошка?</label>
+                <div className="grid grid-cols-2 gap-3">
+                  {[{ label: "🐶 Собака", val: "dog" }, { label: "🐱 Кошка", val: "cat" }].map((opt) => (
                     <button
-                      key={s.title}
-                      onClick={() => setSelectedService(s.title)}
-                      className="px-3 py-2.5 rounded-xl text-left transition-all text-sm font-body"
+                      key={opt.val}
+                      onClick={() => setPetType(opt.val)}
+                      className="py-3 rounded-xl font-body text-sm font-semibold transition-all"
                       style={{
-                        backgroundColor: selectedService === s.title ? "var(--gold)" : "var(--cream)",
-                        color: selectedService === s.title ? "var(--dark)" : "rgba(26,18,8,0.7)",
-                        fontWeight: selectedService === s.title ? "600" : "400",
+                        backgroundColor: petType === opt.val ? C.mint : C.bg,
+                        color: petType === opt.val ? C.white : C.dark,
+                        border: `2px solid ${petType === opt.val ? C.mint : C.mintLight}`,
                       }}
                     >
-                      {s.title}
+                      {opt.label}
                     </button>
                   ))}
                 </div>
               </div>
 
+              {/* When */}
               <div>
-                <label className="font-display text-sm font-semibold block mb-3 tracking-wide" style={{ color: "var(--dark)" }}>МАСТЕР</label>
-                <div className="grid grid-cols-4 gap-2">
-                  {[...masters, { name: "Любой", exp: "", spec: "", emoji: "🎲" }].map((m) => (
-                    <button
-                      key={m.name}
-                      onClick={() => setSelectedMaster(m.name)}
-                      className="px-2 py-2.5 rounded-xl text-center transition-all font-body text-sm"
-                      style={{
-                        backgroundColor: selectedMaster === m.name ? "var(--dark)" : "var(--cream)",
-                        color: selectedMaster === m.name ? "#fff" : "rgba(26,18,8,0.7)",
-                        fontWeight: selectedMaster === m.name ? "600" : "400",
-                      }}
-                    >
-                      <div className="text-xl mb-0.5">{m.emoji}</div>
-                      <div className="text-xs">{m.name.split(" ")[0]}</div>
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <label className="font-display text-sm font-semibold block mb-3 tracking-wide" style={{ color: "var(--dark)" }}>ВРЕМЯ</label>
-                <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
-                  {bookingSlots.map((t) => (
-                    <button
-                      key={t}
-                      onClick={() => setSelectedTime(t)}
-                      className="py-2.5 rounded-xl text-sm font-body font-medium transition-all"
-                      style={{
-                        backgroundColor: selectedTime === t ? "var(--gold)" : "var(--cream)",
-                        color: selectedTime === t ? "var(--dark)" : "rgba(26,18,8,0.7)",
-                        fontWeight: selectedTime === t ? "700" : "400",
-                      }}
-                    >
-                      {t}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <label className="font-display text-sm font-semibold block mb-2 tracking-wide" style={{ color: "var(--dark)" }}>ПОРОДА И ПОЖЕЛАНИЯ</label>
-                <textarea
-                  placeholder="Например: пудель той, боится фена, хотим модельную стрижку..."
-                  rows={3}
-                  className="w-full px-4 py-3 rounded-xl font-body text-base outline-none transition-all resize-none"
-                  style={{ backgroundColor: "var(--cream)", border: "2px solid transparent" }}
-                  onFocus={(e) => (e.currentTarget.style.borderColor = "var(--gold)")}
-                  onBlur={(e) => (e.currentTarget.style.borderColor = "transparent")}
+                <label className="font-body text-sm font-semibold block mb-2" style={{ color: C.dark }}>Когда удобно прийти?</label>
+                <input
+                  type="text"
+                  placeholder="Например: в будни после 17:00"
+                  className="w-full px-4 py-3 rounded-xl font-body text-base outline-none transition-all"
+                  style={{ backgroundColor: C.bg, border: `2px solid ${C.mintLight}` }}
+                  onFocus={(e) => (e.currentTarget.style.borderColor = C.mint)}
+                  onBlur={(e) => (e.currentTarget.style.borderColor = C.mintLight)}
                 />
               </div>
 
+              {/* Submit */}
               <button
-                className="w-full py-4 rounded-2xl font-display text-xl font-bold tracking-wide transition-all hover:scale-105 hover:shadow-xl"
-                style={{ background: "linear-gradient(135deg, var(--gold) 0%, #FFD166 100%)", color: "var(--dark)" }}
+                className="w-full py-4 rounded-2xl font-heading text-xl font-bold transition-all hover:scale-105 hover:shadow-xl"
+                style={{ backgroundColor: C.mint, color: C.white }}
               >
-                ОТПРАВИТЬ ЗАЯВКУ ✦
+                💛 Отправить заявку
               </button>
 
-              <p className="text-center font-body text-xs" style={{ color: "rgba(26,18,8,0.4)" }}>
-                Мы свяжемся с вами в течение 15 минут для подтверждения
+              <p className="text-center font-body text-sm" style={{ color: "rgba(46,74,58,0.5)" }}>
+                Мы перезвоним через 15 минут — обсудим детали и цену. Без спама и без обязательств.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer style={{ backgroundColor: "var(--dark)", borderTop: "1px solid rgba(245,166,35,0.15)" }}>
+      {/* ── FOOTER ── */}
+      <footer style={{ backgroundColor: C.dark }}>
         <div className="max-w-7xl mx-auto px-6 py-12">
-          <div className="grid md:grid-cols-4 gap-8 mb-10">
+          <div className="grid md:grid-cols-3 gap-10 mb-10">
+            {/* Brand */}
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <div className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold" style={{ background: "var(--gold)", color: "var(--dark)" }}>
+                <div className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold" style={{ backgroundColor: C.mint, color: C.white }}>
                   GC
                 </div>
-                <span className="font-display text-xl font-bold" style={{ color: "var(--gold)" }}>GOLD CLIPPER</span>
+                <span className="font-heading text-xl" style={{ color: C.mintLight }}>Gold Clipper ✨</span>
               </div>
-              <p className="font-body text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.45)" }}>
-                Профессиональный груминг-салон для собак и кошек. Любим каждого питомца.
+              <p className="font-body text-sm leading-relaxed" style={{ color: "rgba(184,224,212,0.6)" }}>
+                Груминг с душой. Любим каждого хвостика.
               </p>
             </div>
 
+            {/* Contacts */}
             <div>
-              <div className="font-display text-sm font-semibold tracking-wider mb-4" style={{ color: "var(--gold)" }}>МЕНЮ</div>
+              <div className="font-body text-sm font-semibold tracking-widest uppercase mb-4" style={{ color: C.mint }}>Контакты</div>
+              <ul className="space-y-3">
+                {[
+                  { icon: "Phone", text: "+7 (999) 123-45-67", href: "tel:+79991234567" },
+                  { icon: "MessageCircle", text: "@gold_clipper", href: "https://t.me/gold_clipper" },
+                  { icon: "MapPin", text: "Москва, ул. ваша, дом X (рядом с метро)", href: "#" },
+                ].map((item, i) => (
+                  <li key={i}>
+                    <a
+                      href={item.href}
+                      className="flex items-center gap-2 font-body text-sm transition-colors"
+                      style={{ color: "rgba(184,224,212,0.7)" }}
+                      onMouseEnter={(e) => (e.currentTarget.style.color = C.mintLight)}
+                      onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(184,224,212,0.7)")}
+                    >
+                      <Icon name={item.icon} size={14} fallback="Info" />
+                      {item.text}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Nav */}
+            <div>
+              <div className="font-body text-sm font-semibold tracking-widest uppercase mb-4" style={{ color: C.mint }}>Меню</div>
               <ul className="space-y-2">
                 {navLinks.map((l) => (
                   <li key={l.href}>
                     <a
                       href={l.href}
                       className="font-body text-sm transition-colors"
-                      style={{ color: "rgba(255,255,255,0.45)" }}
-                      onMouseEnter={(e) => (e.currentTarget.style.color = "var(--gold)")}
-                      onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.45)")}
+                      style={{ color: "rgba(184,224,212,0.6)" }}
+                      onMouseEnter={(e) => (e.currentTarget.style.color = C.mintLight)}
+                      onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(184,224,212,0.6)")}
                     >
                       {l.label}
                     </a>
@@ -618,51 +557,37 @@ export default function Index() {
                 ))}
               </ul>
             </div>
-
-            <div>
-              <div className="font-display text-sm font-semibold tracking-wider mb-4" style={{ color: "var(--gold)" }}>КОНТАКТЫ</div>
-              <ul className="space-y-3">
-                {[
-                  { icon: "Phone", text: "+7 (999) 123-45-67" },
-                  { icon: "Mail", text: "info@goldclipper.ru" },
-                  { icon: "MapPin", text: "Москва, ул. Пушкина, 12" },
-                  { icon: "Clock", text: "Пн–Вс 9:00–21:00" },
-                ].map((item, i) => (
-                  <li key={i} className="flex items-center gap-2" style={{ color: "rgba(255,255,255,0.55)" }}>
-                    <Icon name={item.icon} size={14} fallback="Info" />
-                    <span className="font-body text-sm">{item.text}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <div className="font-display text-sm font-semibold tracking-wider mb-4" style={{ color: "var(--gold)" }}>МЫ В СОЦ. СЕТЯХ</div>
-              <div className="flex gap-3">
-                {[
-                  { icon: "Instagram", label: "Instagram" },
-                  { icon: "MessageCircle", label: "Telegram" },
-                  { icon: "Youtube", label: "YouTube" },
-                ].map((s) => (
-                  <button
-                    key={s.label}
-                    className="w-10 h-10 rounded-xl flex items-center justify-center transition-all hover:scale-110"
-                    style={{ backgroundColor: "rgba(245,166,35,0.12)", color: "var(--gold)" }}
-                  >
-                    <Icon name={s.icon} size={18} fallback="Share2" />
-                  </button>
-                ))}
-              </div>
-            </div>
           </div>
 
-          <div className="pt-6 flex flex-col md:flex-row items-center justify-between gap-4" style={{ borderTop: "1px solid rgba(255,255,255,0.07)" }}>
-            <p className="font-body text-xs" style={{ color: "rgba(255,255,255,0.25)" }}>
-              © 2024 Gold Clipper. Все права защищены.
+          <div
+            className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4"
+            style={{ borderTop: "1px solid rgba(184,224,212,0.12)" }}
+          >
+            <p className="font-body text-xs" style={{ color: "rgba(184,224,212,0.35)" }}>
+              © 2026 Gold Clipper — груминг с душой
             </p>
-            <p className="font-body text-xs" style={{ color: "rgba(255,255,255,0.2)" }}>
-              Политика конфиденциальности · Оферта
-            </p>
+            <div className="flex items-center gap-4">
+              <a href="#" className="font-body text-xs transition-colors" style={{ color: "rgba(184,224,212,0.35)" }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = C.mintLight)}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(184,224,212,0.35)")}
+              >
+                Политика конфиденциальности
+              </a>
+              <span style={{ color: "rgba(184,224,212,0.2)" }}>|</span>
+              <a href="#" className="font-body text-xs" style={{ color: "rgba(184,224,212,0.35)" }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = C.mintLight)}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(184,224,212,0.35)")}
+              >
+                Ваши данные в безопасности
+              </a>
+              <button
+                onClick={scrollTop}
+                className="ml-2 w-8 h-8 rounded-full flex items-center justify-center transition-all hover:scale-110"
+                style={{ backgroundColor: C.mint, color: C.white }}
+              >
+                <Icon name="ArrowUp" size={14} />
+              </button>
+            </div>
           </div>
         </div>
       </footer>
